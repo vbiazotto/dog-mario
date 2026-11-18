@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/traps/FakePlatform.gd" id="1_r"]
+[ext_resource type="Texture2D" path="res://assets/sprites/environment/tile_grass_top.png" id="2_r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
+size = Vector2(96, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2"]
+size = Vector2(88, 10)
+
+[node name="FakePlatform" type="Node2D"]
+script = ExtResource("1_r")
+
+[node name="Body" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Body"]
+position = Vector2(0, 0)
+scale = Vector2(1, 1)
+texture = ExtResource("2_r")
+centered = false
+texture_repeat = 2
+region_enabled = true
+region_rect = Rect2(0, 0, 96, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body"]
+position = Vector2(48, 16)
+shape = SubResource("RectangleShape2D_1")
+
+[node name="Detector" type="Area2D" parent="Body"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body/Detector"]
+position = Vector2(48, -4)
+shape = SubResource("RectangleShape2D_2")

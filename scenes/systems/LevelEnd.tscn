@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/systems/LevelEnd.gd" id="1_r"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/star.png" id="2_r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
+size = Vector2(64, 220)
+
+[node name="LevelEnd" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -110)
+shape = SubResource("RectangleShape2D_1")
+
+[node name="Flag" type="Node2D" parent="."]
+
+[node name="Pole" type="ColorRect" parent="Flag"]
+offset_left = -3.0
+offset_top = -200.0
+offset_right = 3.0
+offset_bottom = 0.0
+color = Color(0.9, 0.9, 0.9, 1)
+
+[node name="Banner" type="ColorRect" parent="Flag"]
+offset_left = 3.0
+offset_top = -200.0
+offset_right = 63.0
+offset_bottom = -160.0
+color = Color(1, 0.8, 0.1, 1)
+
+[node name="Star" type="Sprite2D" parent="Flag"]
+position = Vector2(33, -180)
+scale = Vector2(2, 2)
+texture = ExtResource("2_r")
+
+[node name="Hint" type="Label" parent="."]
+offset_left = -140.0
+offset_top = -260.0
+offset_right = 100.0
+offset_bottom = -230.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+text = "Derrote o chefe!"
+horizontal_alignment = 1
